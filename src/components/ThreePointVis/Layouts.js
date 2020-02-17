@@ -78,7 +78,7 @@ export function useAnimatedLayout({ data, layout, onFrame }) {
   useSourceTargetLayout({ data, layout });
 
   const prevLayout = React.useRef(layout);
-  useSpring({
+  const animProps = useSpring({
     animationProgress: 1,
     from: { animationProgress: 0 },
     reset: layout !== prevLayout.current,
@@ -90,4 +90,6 @@ export function useAnimatedLayout({ data, layout, onFrame }) {
     },
   });
   prevLayout.current = layout;
+
+  return animProps;
 }
