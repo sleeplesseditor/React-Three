@@ -7,13 +7,19 @@ const data = new Array(100000).fill(0).map((d, id) => ({ id }));
 
 function App() {
   const [layout, setLayout] = useState('grid');
+  const [selectedPoint, setSelectedPoint] = useState(null);
 
   return (
     <React.Fragment>
     <Header />
     <div className="App">
       <div className="vis-container">
-        <ThreePointVis data={data} layout={layout} />
+        <ThreePointVis
+          data={data} 
+          layout={layout}
+          selectedPoint={selectedPoint}
+          onSelectPoint={setSelectedPoint} 
+        />
       </div>
       <div className="controls">
         <strong>Layouts</strong>
@@ -31,6 +37,11 @@ function App() {
             Spiral
           </button>
         </div>
+        {selectedPoint && (
+          <div className="controls__selected-point">
+            You selected <strong>{selectedPoint.id}</strong>
+          </div>
+        )}
       </div>
     </div>
     </React.Fragment>

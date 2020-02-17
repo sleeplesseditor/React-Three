@@ -19,7 +19,7 @@ function updatedInstanceMeshMatrices({ mesh, data }) {
   mesh.instanceMatrix.needsUpdate = true;
 }
 
-const InstancedPoints = ({ data, layout }) => {
+const InstancedPoints = ({ data, layout, selectedPoint, onSelectPoint }) => {
   const meshRef = React.useRef();
   const numPoints = data.length;
 
@@ -34,12 +34,25 @@ const InstancedPoints = ({ data, layout }) => {
   useEffect(() => {
     updatedInstanceMeshMatrices({ mesh: meshRef.current, data });
   }, [data, layout]);
+  
+  const handleClick = evt => {
+    const { instanceId } = evt;
+    const index = instanceId;
+    const point = data[index];
+
+    if(point === selectedPoint){
+      onSelectPoint(null);
+    } else {
+      onSelectPoint(point);
+    }
+  };
 
   return (
     <instancedMesh
       ref={meshRef}
       args={[null, null, numPoints]}
       frustumCulled={false}
+      onClick={handleClick}
     >
       <cylinderBufferGeometry attach="geometry" args={[0.5, 0.5, 0.15, 32]} />
       <meshStandardMaterial attach="material" color="#fff" />
