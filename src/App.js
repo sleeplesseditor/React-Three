@@ -3,7 +3,7 @@ import Header from './components/Header/Header';
 import ThreePointVis from './components/ThreePointVis/ThreePointVis';
 import './App.scss';
 
-const data = new Array(100000).fill(0).map((d, id) => ({ id }));
+const data = new Array(10000).fill(0).map((d, id) => ({ id }));
 
 function App() {
   const [layout, setLayout] = useState('grid');

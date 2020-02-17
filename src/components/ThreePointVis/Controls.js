@@ -22,7 +22,7 @@ const Controls = ({}, ref) => {
   React.useImperativeHandle(ref, () => ({
     resetCamera: () => {
       controls.current.target.set(0, 0, 0);
-      camera.position.set(0, 0, 200);
+      camera.position.set(0, 0, 80);
 
       camera.up.set(
         controls.current.up0.x,

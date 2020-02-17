@@ -13,7 +13,7 @@ const ThreePointVis = ({ data, layout, selectedPoint, onSelectPoint }, ref) => {
   }));
 
   return (
-    <Canvas camera={{ position: [0, 0, 200], far: 15000 }}>
+    <Canvas camera={{ position: [0, 0, 80], far: 15000 }}>
       <Controls ref={controlsRef} />
       <ambientLight color="#ffffff" intensity={0.1} />
       <hemisphereLight
