@@ -3,9 +3,9 @@ import { Canvas } from 'react-three-fiber';
 import Controls from './Controls';
 import InstancedPoints from './InstancedPoints';
 
-const ThreePointVis = ({ data }) => {
+const ThreePointVis = ({ data, layout }) => {
   return (
-    <Canvas camera={{ position: [0, 0, 80], far: 15000 }}>
+    <Canvas camera={{ position: [0, 0, 300], far: 15000 }}>
       <Controls />
       <ambientLight color="#ffffff" intensity={0.1} />
       <hemisphereLight
@@ -14,7 +14,7 @@ const ThreePointVis = ({ data }) => {
         groundColor="#080820"
         intensity={1.0}
       />
-      <InstancedPoints data={data} />
+      <InstancedPoints data={data} layout={layout} />
     </Canvas>
   )
 }

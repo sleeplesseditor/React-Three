@@ -1,0 +1,78 @@
+.App {
+  height: 100vh;
+  position: relative;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #000;
+}
+
+.vis-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 16px;
+  color: #fff;
+  width: 200px;
+  border-radius: 16px;
+  margin-top: 5rem;
+  
+
+  &__buttons-container {
+    display: flex;
+    flex-direction: row;
+
+    & > button {
+      padding: 10px;
+      background: #222;
+      color: #ccc;
+      border: none;
+      margin: 2px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    
+      &:hover {
+        background-color: #111;
+        color: #fff;
+      }
+    
+      &.active {
+        font-weight: bold;
+        background-color: #333;
+        color: #ff0;
+      }
+    }
+  }
+}
+
+// .controls > button {
+//   padding: 10px;
+//   background: #222;
+//   color: #ccc;
+//   border: none;
+//   margin: 2px;
+//   text-transform: uppercase;
+//   letter-spacing: 1px;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: #111;
+//     color: #fff;
+//   }
+
+//   &.active {
+//     font-weight: bold;
+//     background-color: #333;
+//     color: #ff0;
+//   }
+// }
