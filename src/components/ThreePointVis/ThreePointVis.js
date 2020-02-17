@@ -4,10 +4,17 @@ import Controls from './Controls';
 import InstancedPoints from './InstancedPoints';
 import Effects from './Effects';
 
-const ThreePointVis = ({ data, layout, selectedPoint, onSelectPoint }) => {
+const ThreePointVis = ({ data, layout, selectedPoint, onSelectPoint }, ref) => {
+  const controlsRef = React.useRef();
+  React.useImperativeHandle(ref, () => ({
+    resetCamera: () => {
+      return controlsRef.current.resetCamera();
+    },
+  }));
+
   return (
-    <Canvas camera={{ position: [0, 0, 300], far: 15000 }}>
-      <Controls />
+    <Canvas camera={{ position: [0, 0, 200], far: 15000 }}>
+      <Controls ref={controlsRef} />
       <ambientLight color="#ffffff" intensity={0.1} />
       <hemisphereLight
         color="#ffffff"
@@ -26,4 +33,4 @@ const ThreePointVis = ({ data, layout, selectedPoint, onSelectPoint }) => {
   )
 }
 
-export default ThreePointVis;
+export default React.forwardRef(ThreePointVis);

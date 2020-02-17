@@ -10,14 +10,27 @@ const ALT_KEY = 18;
 const CTRL_KEY = 17;
 const CMD_KEY = 91;
 
-const Controls = ({}) => {
+const Controls = ({}, ref) => {
   const controls = React.useRef();
   const { camera, gl } = useThree();
 
   useFrame(() => {
     // Update view as Visualisation is interacted with
     controls.current.update();
-  })
+  });
+
+  React.useImperativeHandle(ref, () => ({
+    resetCamera: () => {
+      controls.current.target.set(0, 0, 0);
+      camera.position.set(0, 0, 200);
+
+      camera.up.set(
+        controls.current.up0.x,
+        controls.current.up0.y,
+        controls.current.up0.z
+      );
+    },
+  }));
 
   return (
     <trackballControls
@@ -38,4 +51,4 @@ const Controls = ({}) => {
   );
 };
 
-export default Controls;
+export default React.forwardRef(Controls);

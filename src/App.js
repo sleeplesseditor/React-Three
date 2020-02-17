@@ -9,12 +9,18 @@ function App() {
   const [layout, setLayout] = useState('grid');
   const [selectedPoint, setSelectedPoint] = useState(null);
 
+  const visRef = React.useRef();
+  const handleResetCamera = () => {
+    visRef.current.resetCamera();
+  }
+
   return (
     <React.Fragment>
     <Header />
     <div className="App">
       <div className="vis-container">
         <ThreePointVis
+          ref={visRef}
           data={data} 
           layout={layout}
           selectedPoint={selectedPoint}
@@ -37,6 +43,12 @@ function App() {
             Spiral
           </button>
         </div>
+        <button
+          className="controls__reset-button"
+          onClick={handleResetCamera}
+        >
+          Reset Camera
+        </button>
         {selectedPoint && (
           <div className="controls__selected-point">
             You selected <strong>{selectedPoint.id}</strong>

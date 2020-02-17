@@ -25,8 +25,30 @@
   width: 200px;
   border-radius: 16px;
   margin-top: 5rem;
-  
 
+  &__reset-button { 
+    width: 59%;
+    padding: 10px;
+    background: #222;
+    color: #ccc;
+    border: none;
+    margin: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+      
+    &:hover {
+      background-color: #111;
+      color: #fff;
+    }
+  
+    &.active {
+      font-weight: bold;
+      background-color: #333;
+      color: #ff0;
+    }
+  }
+  
   &__buttons-container {
     display: flex;
     flex-direction: row;
@@ -55,25 +77,3 @@
     }
   }
 }
-
-// .controls > button {
-//   padding: 10px;
-//   background: #222;
-//   color: #ccc;
-//   border: none;
-//   margin: 2px;
-//   text-transform: uppercase;
-//   letter-spacing: 1px;
-//   cursor: pointer;
-
-//   &:hover {
-//     background-color: #111;
-//     color: #fff;
-//   }
-
-//   &.active {
-//     font-weight: bold;
-//     background-color: #333;
-//     color: #ff0;
-//   }
-// }
